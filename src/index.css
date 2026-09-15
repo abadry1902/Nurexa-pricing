@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --font-cairo: "Cairo", sans-serif;
+  --font-sans: "Cairo", sans-serif;
+
+  --color-nurexa-navy: #000F2C;
+  --color-nurexa-green: #00CB54;
+  --color-nurexa-green-light: #e6faed;
+  --color-nurexa-white: #FFFFFF;
+  --color-nurexa-gray-light: #F6F7F9;
+  --color-nurexa-gray-border: #E8E8E8;
+}
+
+@layer base {
+  body {
+    @apply bg-nurexa-white text-nurexa-navy font-sans;
+  }
+}

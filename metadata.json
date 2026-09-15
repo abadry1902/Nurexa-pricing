@@ -1,0 +1,8 @@
+{
+  "name": "Nurexa Digital Solutions",
+  "description": "Right Partner for Every Solution",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
