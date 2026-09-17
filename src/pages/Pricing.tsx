@@ -80,34 +80,14 @@ const TextAgentPricing = () => {
     {
       name: 'Starter',
       price: '99',
-      features: [
-        '700 رسالة / شهرياً',
-        'مستخدم واحد (1 member)',
-        'وكيل نصي بالذكاء الاصطناعي',
-        'قاعدة معرفة أساسية',
-        'تحليلات أساسية',
-        'ربط مع الموقع الإلكتروني',
-        'استخدام لخدمة العملاء',
-        'نماذج ذكاء اصطناعي قياسية (Standard AI)'
-      ],
+      quota: '700 رسالة / شهر',
       cta: 'ابدأ الآن',
       highlighted: false
     },
     {
       name: 'Growth',
       price: '189',
-      features: [
-        '2,300 رسالة / شهرياً',
-        'مستخدمين (2 members)',
-        'نماذج ذكاء اصطناعي متقدمة',
-        'تكاملات (Integrations)',
-        'تحليلات (Analytics)',
-        'المرفقات (Attachments)',
-        'تخصيص متقدم (Personalization)',
-        'إعادة تدريب تلقائي',
-        'تأهيل العملاء المحتملين',
-        'مسارات عمل لخدمة العملاء'
-      ],
+      quota: '2,300 رسالة / شهر',
       cta: 'ابدأ الآن',
       highlighted: true,
       badge: 'الأكثر اختياراً'
@@ -115,18 +95,7 @@ const TextAgentPricing = () => {
     {
       name: 'Pro',
       price: '499',
-      features: [
-        '10,000 رسالة / شهرياً',
-        '5 مستخدمين',
-        'كل ما في باقة Growth',
-        'تحليلات متقدمة',
-        'وصول برمجي (API access)',
-        'تكاملات متقدمة',
-        'أولوية في المعالجة',
-        'تخصيص متقدم جداً',
-        'مسارات عمل متعددة',
-        'تقارير متقدمة'
-      ],
+      quota: '10,000 رسالة / شهر',
       cta: 'ابدأ الآن',
       highlighted: false
     },
@@ -134,19 +103,7 @@ const TextAgentPricing = () => {
       name: 'Enterprise',
       price: 'مخصص',
       priceLabel: 'تواصل معنا',
-      features: [
-        'حدود استخدام أعلى',
-        'فوترة مرنة',
-        'أدوار وصلاحيات مخصصة',
-        'تسجيل الدخول الموحد (SSO)',
-        'خيارات White-label',
-        'سجلات التدقيق (Audit logs)',
-        'أولوية الدعم الفني',
-        'اتفاقية مستوى الخدمة (SLA)',
-        'تكاملات مخصصة',
-        'تأهيل وتدريب مخصص',
-        'أمان على مستوى المؤسسات'
-      ],
+      quota: 'حدود استخدام أعلى',
       cta: 'تحدث معنا',
       highlighted: false,
       isContact: true
@@ -159,19 +116,19 @@ const TextAgentPricing = () => {
         <div 
           key={index} 
           className={cn(
-            "bg-nurexa-white rounded-[2rem] p-8 border flex flex-col relative transition-transform duration-300 hover:-translate-y-2",
+            "bg-nurexa-white rounded-[1.5rem] p-6 border flex flex-col relative transition-transform duration-300 hover:-translate-y-2 text-center",
             plan.highlighted ? "border-nurexa-green shadow-lg ring-1 ring-nurexa-green" : "border-nurexa-gray-border shadow-sm"
           )}
         >
           {plan.badge && (
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-nurexa-green text-nurexa-navy font-bold text-xs py-1.5 px-4 rounded-full">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-nurexa-green text-nurexa-navy font-bold text-xs py-1.5 px-4 rounded-full whitespace-nowrap">
               {plan.badge}
             </div>
           )}
           
-          <h3 className="text-xl font-bold text-nurexa-navy mb-4">{plan.name}</h3>
+          <h3 className="text-2xl font-bold text-nurexa-navy mb-4 mt-2">{plan.name}</h3>
           
-          <div className="mb-8 flex items-baseline gap-1">
+          <div className="mb-6 flex flex-col items-center justify-center gap-1 min-h-[4rem]">
             {plan.isContact ? (
               <span className="text-3xl font-extrabold text-nurexa-navy">{plan.priceLabel}</span>
             ) : (
@@ -181,28 +138,22 @@ const TextAgentPricing = () => {
               </>
             )}
           </div>
-          
-          <div className="flex-grow">
-            <ul className="space-y-4 mb-8">
-              {plan.features.map((feature, fIndex) => (
-                <li key={fIndex} className="flex items-start gap-3">
-                  <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-nurexa-green-light flex items-center justify-center">
-                    <Check size={14} className="text-nurexa-green" strokeWidth={3} />
-                  </div>
-                  <span className="text-sm text-gray-700 leading-tight">{feature}</span>
-                </li>
-              ))}
-            </ul>
+
+          <div className="bg-nurexa-green-light text-nurexa-navy font-bold text-sm py-2 px-4 rounded-xl mb-6 text-center mx-auto w-full max-w-[200px]">
+            {plan.quota}
           </div>
           
-          <Link to={plan.isContact ? "/contact" : "/new-client"} className="mt-auto block">
-            <Button 
-              variant={plan.highlighted ? 'primary' : 'outline'} 
-              fullWidth
-            >
-              {plan.cta}
-            </Button>
-          </Link>
+          <div className="mt-auto pt-2">
+            <Link to={plan.isContact ? "/contact" : "/new-client"} className="block">
+              <Button 
+                variant={plan.highlighted ? 'primary' : 'outline'} 
+                fullWidth
+                className={cn("font-bold", plan.highlighted ? "shadow-md" : "")}
+              >
+                {plan.cta}
+              </Button>
+            </Link>
+          </div>
         </div>
       ))}
     </div>
@@ -210,33 +161,94 @@ const TextAgentPricing = () => {
 };
 
 const VoiceAgentPricing = () => {
+  const plans = [
+    {
+      name: 'Starter',
+      price: '299',
+      quota: '400 دقيقة / شهر',
+      cta: 'ابدأ الآن',
+      highlighted: false
+    },
+    {
+      name: 'Growth',
+      price: '719',
+      quota: '1,200 دقيقة / شهر',
+      cta: 'اختر هذه الخطة',
+      highlighted: false
+    },
+    {
+      name: 'Business',
+      price: '1,499',
+      quota: '2,500 دقيقة / شهر',
+      cta: 'اختر هذه الخطة',
+      highlighted: true,
+      badge: 'الأكثر اختياراً'
+    },
+    {
+      name: 'Scale',
+      price: '2,999',
+      quota: '5,000 دقيقة / شهر',
+      cta: 'تواصل معنا',
+      highlighted: false,
+      isContact: true
+    },
+    {
+      name: 'Enterprise',
+      price: 'مخصص',
+      priceLabel: 'تواصل معنا',
+      quota: 'دقائق غير محدودة',
+      cta: 'تواصل مع فريق المبيعات',
+      highlighted: false,
+      isContact: true
+    }
+  ];
+
   return (
-    <div className="bg-nurexa-white rounded-[2rem] p-10 md:p-16 border border-nurexa-gray-border shadow-sm max-w-4xl mx-auto text-center">
-      <div className="w-20 h-20 bg-nurexa-green-light rounded-3xl mx-auto flex items-center justify-center mb-8">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-nurexa-green"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path><path d="M14.05 2a9 9 0 0 1 8 7.94"></path><path d="M14.05 6A5 5 0 0 1 18 10"></path></svg>
-      </div>
-      
-      <h3 className="text-3xl md:text-4xl font-extrabold text-nurexa-navy mb-6">خطط مخصصة حسب عدد المكالمات ودقائق الاستخدام</h3>
-      <p className="text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
-        نصمم باقات الوكيل الصوتي بناءً على احتياجاتك الفعلية لضمان أفضل قيمة وعائد على الاستثمار.
-      </p>
-      
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 text-right">
-        {[
-          'عدد دقائق المكالمات', 'عدد الوكلاء', 'التكاملات',
-          'عدد الخطوط', 'ربط CRM', 'المكالمات الواردة',
-          'المكالمات الصادرة', 'التقارير', 'تسجيل وتحليل المحادثات'
-        ].map((factor, idx) => (
-          <div key={idx} className="flex items-center gap-3">
-            <Check size={20} className="text-nurexa-green flex-shrink-0" />
-            <span className="font-semibold text-nurexa-navy">{factor}</span>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+      {plans.map((plan, index) => (
+        <div 
+          key={index} 
+          className={cn(
+            "bg-nurexa-white rounded-[1.5rem] p-6 border flex flex-col relative transition-transform duration-300 hover:-translate-y-2 text-center",
+            plan.highlighted ? "border-nurexa-green shadow-lg ring-1 ring-nurexa-green" : "border-nurexa-gray-border shadow-sm"
+          )}
+        >
+          {plan.badge && (
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-nurexa-green text-nurexa-navy font-bold text-xs py-1.5 px-4 rounded-full whitespace-nowrap">
+              {plan.badge}
+            </div>
+          )}
+          
+          <h3 className="text-2xl font-bold text-nurexa-navy mb-4 mt-2">{plan.name}</h3>
+          
+          <div className="mb-6 flex flex-col items-center justify-center gap-1 min-h-[4rem]">
+            {plan.price === 'مخصص' ? (
+              <span className="text-3xl font-extrabold text-nurexa-navy">{plan.price}</span>
+            ) : (
+              <>
+                <span className="text-4xl font-extrabold text-nurexa-navy">{plan.price}</span>
+                <span className="text-gray-500 font-medium">ريال / شهر</span>
+              </>
+            )}
           </div>
-        ))}
-      </div>
-      
-      <Link to="/new-client">
-        <Button size="lg" className="px-12">احصل على عرض سعر</Button>
-      </Link>
+          
+          <div className="bg-nurexa-green-light text-nurexa-navy font-bold text-sm py-2 px-4 rounded-xl mb-6 text-center mx-auto w-full max-w-[200px]">
+            {plan.quota}
+          </div>
+          
+          <div className="mt-auto pt-2">
+            <Link to={plan.isContact ? "/contact" : "/new-client"} className="block">
+              <Button 
+                variant={plan.highlighted ? 'primary' : 'outline'} 
+                fullWidth
+                className={cn("text-sm font-bold", plan.highlighted ? "shadow-md" : "")}
+              >
+                {plan.cta}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
